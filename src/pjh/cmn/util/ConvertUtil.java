@@ -15,7 +15,6 @@ public class ConvertUtil {
 
 	/**
 	 * Map을 json String으로 변환하여 반환
-	 * 
 	 * @param Map
 	 * @return String json 문자열
 	 */
@@ -32,7 +31,6 @@ public class ConvertUtil {
 	
 	/**
 	 * json String을 Map으로 변환하여 반환
-	 * 
 	 * @param String json 문자열
 	 * @return Map
 	 */
@@ -46,5 +44,30 @@ public class ConvertUtil {
 			e.printStackTrace();
 		}
 		return map;
+	}
+	
+	/**
+	 * Map String 에서 key에 매핑되는 value 반환 
+	 * @param Map mapStr {k1=v1, k2=v2, k3=v3, ...}
+	 * @param String key
+	 * @return String val
+	 */
+	public static String getValFromMapStr(String mapStr, String key) {
+		String val = null;
+		if (mapStr != null && key != null) {
+			mapStr = mapStr.replace("{", "").replace("}", "");
+			String[] sptByComArr = mapStr.split(",");
+			if (sptByComArr != null) {
+				for (String sptByComStr : sptByComArr) {
+					String[] sptByEqualArr = sptByComStr.split("=");
+					if (sptByEqualArr.length > 1) {
+						if (key.equals(sptByEqualArr[0].trim())) {
+							val = sptByEqualArr[1];
+						}
+					}
+				}
+			}
+		}
+		return val;
 	}
 }
