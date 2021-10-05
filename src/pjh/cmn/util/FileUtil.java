@@ -108,12 +108,12 @@ public class FileUtil {
 		String fileDiv = "";
 		String fileDivPath = filePath;
 		if (!filePath.isEmpty()) {
-			if (filePath.contains(CmnConsts.TXT_FILE_DIV)) {
-				fileDiv = CmnConsts.TXT_FILE_DIV;
-			} else if (filePath.contains(CmnConsts.JSON_FILE_DIV)) {
-				fileDiv = CmnConsts.JSON_FILE_DIV;
-			} else if (filePath.contains(CmnConsts.PDF_FILE_DIV)) {
-				fileDiv = CmnConsts.PDF_FILE_DIV;
+			if (filePath.contains(CmnConsts.FILE_DIV.TXT)) {
+				fileDiv = CmnConsts.FILE_DIV.TXT;
+			} else if (filePath.contains(CmnConsts.FILE_DIV.JSON)) {
+				fileDiv = CmnConsts.FILE_DIV.JSON;
+			} else if (filePath.contains(CmnConsts.FILE_DIV.PDF)) {
+				fileDiv = CmnConsts.FILE_DIV.PDF;
 			}
 		}
 		if (!fileDiv.equals("")) {

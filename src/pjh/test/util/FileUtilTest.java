@@ -10,7 +10,7 @@ import pjh.cmn.consts.CmnConsts;
 import pjh.cmn.util.FileUtil;
 
 class FileUtilTest {
-	final String txtFilePath = CmnConsts.SHARE_ROOT_PATH.concat(CmnConsts.TXT_FILE_DIV).concat(File.separator);
+	final String txtFilePath = CmnConsts.SHARE_ROOT_PATH.concat(CmnConsts.FILE_DIV.TXT).concat(File.separator);
 	final String fileName = "myName";
 	final String writeStr = "PJH";
 	
@@ -27,7 +27,7 @@ class FileUtilTest {
 	void readFileTest() {
 		writeFileTest();
 		
-		String filePath = FileUtil.getFileDivPath(txtFilePath.concat(fileName), CmnConsts.TXT_FILE_DIV);
+		String filePath = FileUtil.getFileDivPath(txtFilePath.concat(fileName), CmnConsts.FILE_DIV.TXT);
 		
 		assertEquals(FileUtil.readFileToStr(filePath), writeStr);
 	}
