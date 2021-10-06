@@ -27,7 +27,6 @@ class ConvertUtilTest {
 		initData();
 		
 		String rtnStr = ConvertUtil.mapToJson(map);
-//		System.out.println("[mapToJsonTest] rtnStr: " + rtnStr); // {"first":"java","second":"eclipse","third":"Junit"}
 		
 		assertEquals(rtnStr, jsonStr);
 	}
@@ -37,7 +36,6 @@ class ConvertUtilTest {
 		initData();
 		
 		Map<String, Object> rtnMap = ConvertUtil.jsonToMap(jsonStr);
-//		System.out.println("[jsonToMapTest] rtnMap: " + rtnMap); // {first=java, second=eclipse, third=Junit}
 		
 		assertEquals(rtnMap, map);				
 	}
@@ -46,12 +44,26 @@ class ConvertUtilTest {
 	void getValFromMapStrTest() {
 		initData();
 		String key = "first";
-		String val = "java";
 		
-//		System.out.println("[getValFromMapStrTest] map: " + map); // {first=java, second=eclipse, third=Junit}
 		String rtnVal = ConvertUtil.getValFromMapStr(map.toString(), key);
 		
-		assertEquals(rtnVal, val);				
+		assertEquals(rtnVal, "java");				
+	}
+	
+	@Test
+	void getQueryStrFromUrlTest() {
+		String url = "http://localhost:8080/pjh/sample.jsp?k1=v1&k2=v2&k3=v3";
+		String queryStr = ConvertUtil.getQueryStrFromUrl(url);
+		
+		assertEquals(queryStr, "{\"k1\":\"v1\",\"k2\":\"v2\",\"k3\":\"v3\"}");				
+	}
+	
+	@Test
+	void getEmptyQueryStrFromUrlTest() {
+		String url = "http://localhost:8080/pjh/sample.jsp";
+		String queryStr = ConvertUtil.getQueryStrFromUrl(url);
+		
+		assertEquals(queryStr, "");				
 	}
 
 }

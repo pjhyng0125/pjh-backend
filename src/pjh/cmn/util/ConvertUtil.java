@@ -1,5 +1,6 @@
 package pjh.cmn.util;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -48,7 +49,7 @@ public class ConvertUtil {
 	
 	/**
 	 * Map String 에서 key에 매핑되는 value 반환 
-	 * @param Map mapStr {k1=v1, k2=v2, k3=v3, ...}
+	 * @param String mapStr {k1=v1, k2=v2, k3=v3, ...}
 	 * @param String key
 	 * @return String val
 	 */
@@ -69,5 +70,28 @@ public class ConvertUtil {
 			}
 		}
 		return val;
+	}
+	
+	/**
+	 * URL 의 query String 을 json String 으로 반환 
+	 * @param String url
+	 * @example http://localhost:8080/pjh/sample.jsp?k1=v1&k2=v2&k3=v3
+	 * @return String queryStr
+	 */
+	public static String getQueryStrFromUrl(String url) {
+		Map<String, Object> queryMap = new HashMap<>();
+		String queryStr = "";
+		String[] sptByQ = url.split("\\?"); // Question TODO: escape 처리 공통 함수, 메타문자 상수
+		if (sptByQ.length > 1) {
+			String[] sptByA = sptByQ[1].split("&"); // Ampersand
+			for (String pair : sptByA) {
+				String[] sptByE = pair.split("="); // Equal
+				if (sptByE.length > 1) {
+					queryMap.put(sptByE[0], sptByE[1]); // TODO: decodeURI (part[1])
+				}
+			}
+			queryStr = mapToJson(queryMap);
+		}
+		return queryStr;
 	}
 }
