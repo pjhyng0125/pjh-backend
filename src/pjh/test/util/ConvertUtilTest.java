@@ -59,11 +59,38 @@ class ConvertUtilTest {
 	}
 	
 	@Test
+	void getExceptQueryStrFromUrlTest() {
+		String url = "http://localhost:8080/pjh/sample.jsp?k1=v1&k2=v2&k3=";
+		String queryStr = ConvertUtil.getQueryStrFromUrl(url);
+		
+		assertEquals(queryStr, "{\"k1\":\"v1\",\"k2\":\"v2\"}");				
+	}
+	
+	@Test
 	void getEmptyQueryStrFromUrlTest() {
 		String url = "http://localhost:8080/pjh/sample.jsp";
 		String queryStr = ConvertUtil.getQueryStrFromUrl(url);
 		
 		assertEquals(queryStr, "");				
+	}
+	
+	@Test
+	void UrlConvertTest() {
+		String data = "A + B";
+		String encode = ConvertUtil.UrlEncode(data);
+		String decode = ConvertUtil.UrlDecode(encode);
+		
+		assertEquals(data, decode);				
+	}
+	
+	@Test
+	void UrlConvertStrangeCaseTest() {
+		String data = "A + B";
+		String decode = ConvertUtil.UrlDecode(data);
+		String encode = ConvertUtil.UrlEncode(decode);
+		String spaceToPlus = "A+++B";
+		
+		assertEquals(encode, spaceToPlus);				
 	}
 
 }
