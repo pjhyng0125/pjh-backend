@@ -1,10 +1,10 @@
-package pjh.test;
+package pjh.test.util.StringUtil;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class StringTest {
+class StrCompareTest {
 	String str = "My backend is java";
 	String comStr = "";
 	
@@ -42,5 +42,4 @@ class StringTest {
 		comStr = "backend";
 		assertEquals(str.contains(comStr), true);
 	}
-
 }

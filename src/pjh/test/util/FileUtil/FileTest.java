@@ -1,4 +1,4 @@
-package pjh.test.util;
+package pjh.test.util.FileUtil;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -9,11 +9,10 @@ import org.junit.jupiter.api.Test;
 import pjh.cmn.consts.CmnConsts;
 import pjh.cmn.util.FileUtil;
 
-class FileUtilTest {
+class FileTest {
 	final String txtFilePath = CmnConsts.SHARE_ROOT_PATH.concat(CmnConsts.FILE_DIV.TXT).concat(File.separator);
 	final String fileName = "myName";
 	final String writeStr = "PJH";
-	
 
 	@Test
 	void writeFileTest() {
@@ -33,6 +32,16 @@ class FileUtilTest {
 	}
 	
 	@Test
+	void getNullFileDivPathTest() {
+		assertEquals(FileUtil.getFileDivPath(null), "");
+	}
+	
+	@Test
+	void getNullFileDivPathParamTest() {
+		assertEquals(FileUtil.getFileDivPath(null, CmnConsts.FILE_DIV.TXT), "");
+	}
+	
+	@Test
 	void renameFileTest() {
 		writeFileTest();
 		
@@ -44,5 +53,4 @@ class FileUtilTest {
 		// Dir도 테스트 가능
 		assertTrue(FileUtil.isPathExists(newPath));		
 	}
-
 }

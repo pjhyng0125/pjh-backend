@@ -82,7 +82,7 @@ public class ConvertUtil {
 	 */
 	public static Map<String, Object> getQueryMapFromUrl(String url) {
 		Map<String, Object> queryMap = new HashMap<>();
-		String[] sptByQ = url.split("\\?"); // Question TODO: escape 처리 공통 함수, 메타문자 상수
+		String[] sptByQ = url.split("\\?"); // Question TODO: escape 처리 공통 함수, 메타문자 상수, null 체크 필요
 		if (sptByQ.length > 1) {
 			String[] sptByA = sptByQ[1].split("&"); // Ampersand
 			for (String pair : sptByA) {
@@ -116,7 +116,7 @@ public class ConvertUtil {
 	 * @return String encData
 	 */
 	@SuppressWarnings("deprecation")
-	public static String UrlEncode(String data) {
+	public static String urlEncode(String data) {
 		return URLEncoder.encode(data);
 	}
 	
@@ -126,7 +126,7 @@ public class ConvertUtil {
 	 * @return String decData
 	 */
 	@SuppressWarnings("deprecation")
-	public static String UrlDecode(String data) {
+	public static String urlDecode(String data) {
 		return URLDecoder.decode(data);
 	}
 }
