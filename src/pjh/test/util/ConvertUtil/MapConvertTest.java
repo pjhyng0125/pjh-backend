@@ -9,6 +9,9 @@ import org.junit.jupiter.api.Test;
 
 import pjh.cmn.util.ConvertUtil;
 
+/**
+ * Map 변환 테스트
+ */
 class MapConvertTest {
 	Map<String, Object> map = new LinkedHashMap<String, Object>();
 	String jsonStr = "";

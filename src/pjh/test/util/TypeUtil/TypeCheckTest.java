@@ -2,17 +2,12 @@ package pjh.test.util.TypeUtil;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-
 import org.junit.jupiter.api.Test;
 
 import pjh.cmn.util.TypeUtil;
-
+/**
+ * 객체 타입 확인 테스트
+ */
 class TypeCheckTest {
 	final String STR = "문자열";
 	final int INT = 3;

@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 
 import pjh.cmn.util.ConvertUtil;
 
+/**
+ * Url 변환 테스트
+ */
 class UrlConvertTest {
 	
 	@Test

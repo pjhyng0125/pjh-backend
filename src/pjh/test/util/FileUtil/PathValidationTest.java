@@ -6,7 +6,10 @@ import org.junit.jupiter.api.Test;
 
 import pjh.cmn.util.FileUtil;
 
-class PathTest {
+/**
+ * 경로 유효성 확인 테스트
+ */
+class PathValidationTest {
 	
 	@Test
 	void isPathEmptyTest() {		

@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import pjh.cmn.consts.CmnConsts;
 import pjh.cmn.util.FileUtil;
 
+/**
+ * 디렉토리 관련 테스트
+ */
 class DirTest {
 	final String txtDirPath = CmnConsts.SHARE_ROOT_PATH.concat(CmnConsts.FILE_DIV.TXT);
 	

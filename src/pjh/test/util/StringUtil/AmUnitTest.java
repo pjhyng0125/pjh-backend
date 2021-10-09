@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import pjh.cmn.consts.CmnConsts;
 import pjh.cmn.util.StringUtil;
 
+/**
+ * 금액 단위 (Amount Unit) 테스트
+ */
 class AmUnitTest {
 
 	@Test

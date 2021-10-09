@@ -9,6 +9,9 @@ import org.junit.jupiter.api.Test;
 import pjh.cmn.consts.CmnConsts;
 import pjh.cmn.util.FileUtil;
 
+/**
+ * 파일 관련 테스트
+ */
 class FileTest {
 	final String txtFilePath = CmnConsts.SHARE_ROOT_PATH.concat(CmnConsts.FILE_DIV.TXT).concat(File.separator);
 	final String fileName = "myName";

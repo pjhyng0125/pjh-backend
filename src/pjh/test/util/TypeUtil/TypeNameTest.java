@@ -13,6 +13,9 @@ import org.junit.jupiter.api.Test;
 
 import pjh.cmn.util.TypeUtil;
 
+/**
+ * 객체 자료형명 확인 테스트
+ */
 class TypeNameTest {
 
 	@Test
