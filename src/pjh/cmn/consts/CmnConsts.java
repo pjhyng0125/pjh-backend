@@ -36,4 +36,16 @@ public class CmnConsts {
 		/* 십원 */
 		public static int ONE = 1;
 	}
+	
+	/* 객체 타입 구분 */
+	public static class TYPE_DIV {
+		/* 숫자 */
+		public static String INTEGER = "Integer";
+		
+		/* 문자열 */
+		public static String STRING = "String";
+		
+		/* Boolean */
+		public static String BOOLEAN = "Boolean";
+	}
 }

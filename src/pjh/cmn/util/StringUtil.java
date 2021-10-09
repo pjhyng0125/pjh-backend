@@ -9,6 +9,15 @@ public class StringUtil {
 	}
 	
 	/**
+	 * 공백제거한 String 값이 Empty 인지 확인
+	 * @param String
+	 * @return boolean
+	 */
+	public static boolean isEmptyTrim(String val) {
+		return TypeUtil.isNull(val) ? false : val.trim().isEmpty();
+	}
+	
+	/**
 	 * 금액 단위 버림
 	 * @param String am 금액
 	 * @param String cutStart 단위 버림 시작점 (뒤에서부터 count)

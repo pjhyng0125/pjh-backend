@@ -17,7 +17,7 @@ class UrlConvertTest {
 	}
 	
 	@Test
-	void UrlConvertTest() {
+	void urlConvertTest() {
 		String data = "A + B";
 		String encData = ConvertUtil.urlEncode(data);
 		String decData = ConvertUtil.urlDecode(encData);
@@ -26,7 +26,7 @@ class UrlConvertTest {
 	}
 	
 	@Test
-	void UrlConvertStrangeCaseTest() {
+	void urlConvertStrangeCaseTest() {
 		String data = "A + B";
 		String decData = ConvertUtil.urlDecode(data);
 		String encData = ConvertUtil.urlEncode(decData);
