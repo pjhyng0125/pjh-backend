@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class CompareStrTest {
+class StrCompareTest {
 	String str = "My backend is java";
 	String comStr = "";
 	

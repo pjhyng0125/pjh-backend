@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import pjh.cmn.util.ConvertUtil;
 
-class ConvertUrlTest {
+class UrlConvertTest {
 	
 	@Test
 	void getEmptyQueryStrFromUrlTest() {
