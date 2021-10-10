@@ -10,7 +10,7 @@ import pjh.cmn.util.StringUtil;
 /**
  * 금액 단위 (Amount Unit) 테스트
  */
-class AmUnitTest {
+class StringAmUnitTest {
 
 	@Test
 	void cutUnitCase1Test() {

@@ -28,7 +28,7 @@ public class StringUtil {
 		String cutAm = "0";
 		if (cutStart < 0) {
 			cutAm = am;
-		} else if (am != null) { // TODO: Typeutil.isString(am)
+		} else if (TypeUtil.isNotNull(am)) {
 			int len = am.length();
 			int printLen = len - cutStart;
 			if (printLen > 0) {
