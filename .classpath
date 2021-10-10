@@ -10,5 +10,8 @@
 	<classpathentry kind="lib" path="lib/convert/jackson-core-2.11.1.jar"/>
 	<classpathentry kind="lib" path="lib/convert/jackson-databind-2.11.1.jar"/>
 	<classpathentry kind="lib" path="lib/convert/jackson-annotations-2.11.1.jar"/>
+	<classpathentry kind="lib" path="lib/pdf/bcprov-jdk16-146.jar"/>
+	<classpathentry kind="lib" path="lib/pdf/bctsp-jdk16-1.46.jar"/>
+	<classpathentry kind="lib" path="lib/pdf/itextpdf-5.2.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
