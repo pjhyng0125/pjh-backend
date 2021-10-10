@@ -14,7 +14,7 @@ public class StringUtil {
 	 * @return boolean
 	 */
 	public static boolean isEmptyTrim(String val) {
-		return TypeUtil.isNull(val) ? false : val.trim().isEmpty();
+		return TypeUtil.isNull(val) ? true : val.trim().isEmpty();
 	}
 	
 	/**

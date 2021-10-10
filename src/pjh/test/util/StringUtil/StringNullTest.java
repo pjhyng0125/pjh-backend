@@ -11,14 +11,19 @@ import pjh.cmn.util.StringUtil;
  */
 class StringNullTest {
 	final String STR = "문자열";
-
-	@Test
-	void stringNullTrueTest() {
-		assertEquals(StringUtil.isEmptyTrim(null), false);
-	}
 	
 	@Test
 	void stringNullFalseTest() {
-		assertEquals(StringUtil.isEmptyTrim(STR), false);
+		assertFalse(StringUtil.isEmptyTrim(STR));
+	}
+
+	@Test
+	void stringEmptyTrueTest() {
+		assertTrue(StringUtil.isEmptyTrim(""));
+	}
+	
+	@Test
+	void stringNullTrueTest() {
+		assertTrue(StringUtil.isEmptyTrim(null));
 	}
 }

@@ -2,13 +2,13 @@ package pjh.test.util.StringUtil;
 
 import static org.junit.jupiter.api.Assertions.*;
 	
+import org.junit.jupiter.api.Test;
+
 /**
  * 문자열 비교 테스트
  * matches(): 비교 문자열이 정확히 일치해야만 true 반환. 특정 문자열 비교보다는 정규식 표현 이용
  * contains(): 비교 문자열이 포함되면 true 반환.
  */
-import org.junit.jupiter.api.Test;
-
 class StringCompareTest {
 	String str = "My backend is java";
 	String comStr = "";

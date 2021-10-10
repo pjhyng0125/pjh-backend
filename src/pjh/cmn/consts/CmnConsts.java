@@ -9,14 +9,23 @@ public class CmnConsts {
 	
 	/** 파일 구분 */
 	public static class FILE_DIV {
-		/* TEXT 문자열 */
+		/* TEXT 디렉토리, 파일구분 */
 		public static String TXT = "txt";
 		
-		/* JSON 문자열 */
+		/* JSON 디렉토리, 파일구분 */
 		public static String JSON = "json";
 		
-		/* PDF 문자열 */
-		public static String PDF = "pdf";		
+		/* PDF 디렉토리, 파일구분 */
+		public static String PDF = "pdf";
+		
+		/* PNG 디렉토리 */
+		public static String IMG = "img";
+		
+		/* PNG 파일구분 */
+		public static String PNG = "png";
+		
+		/* JPG 파일구분 */
+		public static String JPG = "jpg";
 	}
 	
 	/* 금액 자르기 단위 */

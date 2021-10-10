@@ -13,13 +13,12 @@ import pjh.cmn.util.FileUtil;
  * 파일 관련 테스트
  */
 class FileTest {
-	final String txtFilePath = CmnConsts.SHARE_ROOT_PATH.concat(CmnConsts.FILE_DIV.TXT).concat(File.separator);
-	final String fileName = "myName";
-	final String writeStr = "PJH";
+	final String FILE_NAME = "myName";
+	final String writeStr = "This is sample txt file.";
 
 	@Test
 	void writeFileTest() {
-		String filePath = FileUtil.getFileDivPath(txtFilePath.concat(fileName));
+		String filePath = FileUtil.getFullFilepath(FILE_NAME, CmnConsts.FILE_DIV.TXT);
 		FileUtil.writeStrToFile(writeStr, filePath);
 		
 		assertTrue(FileUtil.isPathExists(filePath));
@@ -29,29 +28,19 @@ class FileTest {
 	void readFileTest() {
 		writeFileTest();
 		
-		String filePath = FileUtil.getFileDivPath(txtFilePath.concat(fileName), CmnConsts.FILE_DIV.TXT);
+		String filePath = FileUtil.getFullFilepath(FILE_NAME, CmnConsts.FILE_DIV.TXT);
 		
 		assertEquals(FileUtil.readFileToStr(filePath), writeStr);
-	}
-	
-	@Test
-	void getNullFileDivPathTest() {
-		assertEquals(FileUtil.getFileDivPath(null), "");
-	}
-	
-	@Test
-	void getNullFileDivPathParamTest() {
-		assertEquals(FileUtil.getFileDivPath(null, CmnConsts.FILE_DIV.TXT), "");
 	}
 	
 	@Test
 	void renameFileTest() {
 		writeFileTest();
 		
-		String oldStr = fileName;
+		String oldStr = FILE_NAME;
 		String newStr = "newFile";
-		String oldPath = FileUtil.getFileDivPath(txtFilePath.concat(oldStr));
-		String newPath = FileUtil.renameFilePath(oldPath, oldStr, newStr);
+		String oldPath = FileUtil.getFullFilepath(oldStr, CmnConsts.FILE_DIV.TXT);
+		String newPath = FileUtil.renameFilepath(oldPath, oldStr, newStr);
 		
 		// Dir도 테스트 가능
 		assertTrue(FileUtil.isPathExists(newPath));		

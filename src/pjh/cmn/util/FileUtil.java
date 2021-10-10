@@ -12,6 +12,12 @@ import java.util.List;
 import pjh.cmn.consts.CmnConsts;
 
 public class FileUtil {
+	private final static String SHARE_ROOT_PATH = CmnConsts.SHARE_ROOT_PATH;
+	private final static String TXT_ROOT_PATH = SHARE_ROOT_PATH.concat(CmnConsts.FILE_DIV.TXT).concat(File.separator);
+	private final static String PDF_ROOT_PATH = SHARE_ROOT_PATH.concat(CmnConsts.FILE_DIV.PDF).concat(File.separator);
+	private final static String IMG_ROOT_PATH = SHARE_ROOT_PATH.concat(CmnConsts.FILE_DIV.IMG).concat(File.separator);
+	private final static String JSON_ROOT_PATH = SHARE_ROOT_PATH.concat(CmnConsts.FILE_DIV.JSON).concat(File.separator);
+	
 	/**
 	 * 인스턴스화 방지
 	 */
@@ -78,11 +84,7 @@ public class FileUtil {
 	 * @return boolean
 	 */
 	public static boolean isPathExists(String pathStr) {
-		boolean isExists = false;
-		if (pathStr != null) {
-			isExists = new File(pathStr).exists();			
-		}
-		return isExists;
+		return pathStr != null ? new File(pathStr).exists() : false;
 	}
 	
 	/**
@@ -92,7 +94,7 @@ public class FileUtil {
 	 * @param String newStr 변경할 문자열
 	 * @return String 변경된 파일경로
 	 */
-	public static String renameFilePath(String oldPath, String oldStr, String newStr) {
+	public static String renameFilepath(String oldPath, String oldStr, String newStr) {
 		String newPath = "";
 		if (isPathExists(oldPath)) {
 			newPath = oldPath.replace(oldStr, newStr);
@@ -100,48 +102,37 @@ public class FileUtil {
 			File replaceFile = new File(newPath);
 			replaceFile.setExecutable(true, false);
 			originFile.renameTo(replaceFile);
+		} else {
+			System.out.println("[" + oldPath + "file is alreay existed.");
 		}
 		return newPath;
 	}
 	
 	/**
-	 * 파일경로에서 파일 구분값 포함여부에 따라 파일 확장자 추가 문자열 반환
-	 * @param String filePath 파일경로 
+	 * 파일명과 파일구분(확장자)을 합친 파일절대경로 반환 (파일구분이 정의되지 않았다면 share 루트 반환)
+	 * @param String fileName 파일명
+	 * @param String fileDiv 파일구분 확장자
 	 * @return String
 	 */
-	public static String getFileDivPath(String filePath) {
-		String fileDiv = "";
-		String fileDivPath = "";
-		if (filePath != null) {
-			fileDivPath = filePath;
-			if (!filePath.isEmpty()) {
-				if (filePath.contains(CmnConsts.FILE_DIV.TXT)) {
-					fileDiv = CmnConsts.FILE_DIV.TXT;
-				} else if (filePath.contains(CmnConsts.FILE_DIV.JSON)) {
-					fileDiv = CmnConsts.FILE_DIV.JSON;
-				} else if (filePath.contains(CmnConsts.FILE_DIV.PDF)) {
-					fileDiv = CmnConsts.FILE_DIV.PDF;
-				}
-			}
-			if (!fileDiv.equals("")) {
-				fileDivPath = fileDivPath.concat(".").concat(fileDiv);				
-			}
-		}
-		return fileDivPath;
-	}
-	
-	/**
-	 * 파일 구분값에 따라 파일 확장자 추가 문자열 반환
-	 * @param String filePath 파일경로 
-	 * @param String fileDiv 파일 구분 문자열
-	 * @return String
-	 */
-	public static String getFileDivPath(String filePath, String fileDiv) {
-		String fileDivPath = "";
-		if (filePath != null) {
-			fileDivPath = filePath.concat(".").concat(fileDiv);
+	public static String getFullFilepath(String fileName, String fileDiv) {
+		String fullFilepath = "";
+		if (!StringUtil.isEmptyTrim(fileName) ||
+			!StringUtil.isEmptyTrim(fileDiv)) {
+			if (fileDiv.equals(CmnConsts.FILE_DIV.TXT)) {
+				fullFilepath = TXT_ROOT_PATH;
+			} else if (fileDiv.equals(CmnConsts.FILE_DIV.JSON)) {
+				fullFilepath = JSON_ROOT_PATH;			
+			} else if (fileDiv.equals(CmnConsts.FILE_DIV.PDF)) {
+				fullFilepath = PDF_ROOT_PATH;			
+			} else if (fileDiv.equals(CmnConsts.FILE_DIV.PNG) ||
+					fileDiv.equals(CmnConsts.FILE_DIV.JPG)) {
+				fullFilepath = IMG_ROOT_PATH;
+			} else {
+				fullFilepath = SHARE_ROOT_PATH;
+			}			
+			fullFilepath = fullFilepath.concat(fileName).concat(".").concat(fileDiv);
 		}		
-		return fileDivPath;
+		return fullFilepath;
 	}
 	
 	/**

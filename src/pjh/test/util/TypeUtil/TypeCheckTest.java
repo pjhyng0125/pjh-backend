@@ -16,101 +16,101 @@ class TypeCheckTest {
 
 	@Test
 	void typeStringCheckTest() {
-		assertEquals(TypeUtil.isString(STR), true);
+		assertTrue(TypeUtil.isString(STR));
 	}
 	
 	@Test
 	void typeStringCheckIntegerTest() {
-		assertEquals(TypeUtil.isString(INT), false);
+		assertFalse(TypeUtil.isString(INT));
 	}
 	
 	@Test
 	void typeStringCheckBooleanTest() {
-		assertEquals(TypeUtil.isString(BOOLEAN), false);
+		assertFalse(TypeUtil.isString(BOOLEAN));
 	}
 	
 	@Test
 	void typeStringCheckEmptyTest() {
-		assertEquals(TypeUtil.isString(EMPTY), true);
+		assertTrue(TypeUtil.isString(EMPTY));
 	}
 	
 	@Test
 	void typeStringCheckNullTest() {
-		assertEquals(TypeUtil.isString(null), false);
+		assertFalse(TypeUtil.isString(null));
 	}
 	
 	@Test
 	void typeIntegerCheckTest() {
-		assertEquals(TypeUtil.isInteger(INT), true);
+		assertTrue(TypeUtil.isInteger(INT));
 	}
 	
 	@Test
 	void typeIntegerCheckStringTest() {
-		assertEquals(TypeUtil.isInteger(STR), false);
+		assertFalse(TypeUtil.isInteger(STR));
 	}
 	
 	@Test
 	void typeIntegerCheckBooleanTest() {
-		assertEquals(TypeUtil.isInteger(BOOLEAN), false);
+		assertFalse(TypeUtil.isInteger(BOOLEAN));
 	}
 	
 	@Test
 	void typeIntegerCheckEmptyTest() {
-		assertEquals(TypeUtil.isInteger(EMPTY), false);
+		assertFalse(TypeUtil.isInteger(EMPTY));
 	}
 	
 	@Test
 	void typeIntegerCheckNullTest() {
-		assertEquals(TypeUtil.isInteger(null), false);
+		assertFalse(TypeUtil.isInteger(null));
 	}
 	
 	@Test
 	void typeBooleanCheckTest() {
-		assertEquals(TypeUtil.isBoolean(BOOLEAN), true);
+		assertTrue(TypeUtil.isBoolean(BOOLEAN));
 	}
 	
 	@Test
 	void typeBooleanCheckIntegerTest() {
-		assertEquals(TypeUtil.isBoolean(INT), false);
+		assertFalse(TypeUtil.isBoolean(INT));
 	}
 	
 	@Test
 	void typeBooleanCheckStringTest() {
-		assertEquals(TypeUtil.isBoolean(STR), false);
+		assertFalse(TypeUtil.isBoolean(STR));
 	}
 	
 	@Test
 	void typeBooleanCheckEmptyTest() {
-		assertEquals(TypeUtil.isBoolean(EMPTY), false);
+		assertFalse(TypeUtil.isBoolean(EMPTY));
 	}
 	
 	@Test
 	void typeBooleanCheckNullTest() {
-		assertEquals(TypeUtil.isBoolean(null), false);
+		assertFalse(TypeUtil.isBoolean(null));
 	}
 	
 	@Test
 	void typeNullCheckTest() {
-		assertEquals(TypeUtil.isNull(null), true);
+		assertTrue(TypeUtil.isNull(null));
 	}
 	
 	@Test
 	void typeNullCheckStringTest() {
-		assertEquals(TypeUtil.isNull(STR), false);
+		assertFalse(TypeUtil.isNull(STR));
 	}
 	
 	@Test
 	void typeNullCheckIntegerTest() {
-		assertEquals(TypeUtil.isNull(INT), false);
+		assertFalse(TypeUtil.isNull(INT));
 	}
 	
 	@Test
 	void typeNullCheckBooleanTest() {
-		assertEquals(TypeUtil.isNull(BOOLEAN), false);
+		assertFalse(TypeUtil.isNull(BOOLEAN));
 	}
 	
 	@Test
 	void typeNullCheckEmptyTest() {
-		assertEquals(TypeUtil.isNull(EMPTY), false);
+		assertFalse(TypeUtil.isNull(EMPTY));
 	}
 }
