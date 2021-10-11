@@ -1,4 +1,4 @@
-package pjh.test.util.TypeUtil;
+package pjh.test.util.type;
 
 import static org.junit.jupiter.api.Assertions.*;
 

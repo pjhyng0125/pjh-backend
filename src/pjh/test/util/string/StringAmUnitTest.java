@@ -1,4 +1,4 @@
-package pjh.test.util.StringUtil;
+package pjh.test.util.string;
 
 import static org.junit.jupiter.api.Assertions.*;
 

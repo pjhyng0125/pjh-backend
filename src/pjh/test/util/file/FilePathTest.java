@@ -1,4 +1,4 @@
-package pjh.test.util.FileUtil;
+package pjh.test.util.file;
 
 import static org.junit.jupiter.api.Assertions.*;
 

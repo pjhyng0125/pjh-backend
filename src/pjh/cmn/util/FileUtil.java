@@ -17,6 +17,7 @@ public class FileUtil {
 	private final static String PDF_ROOT_PATH = SHARE_ROOT_PATH.concat(CmnConsts.FILE_DIV.PDF).concat(File.separator);
 	private final static String IMG_ROOT_PATH = SHARE_ROOT_PATH.concat(CmnConsts.FILE_DIV.IMG).concat(File.separator);
 	private final static String JSON_ROOT_PATH = SHARE_ROOT_PATH.concat(CmnConsts.FILE_DIV.JSON).concat(File.separator);
+	private final static String XML_ROOT_PATH = SHARE_ROOT_PATH.concat(CmnConsts.FILE_DIV.XML).concat(File.separator);
 	
 	/**
 	 * 인스턴스화 방지
@@ -127,6 +128,8 @@ public class FileUtil {
 			} else if (fileDiv.equals(CmnConsts.FILE_DIV.PNG) ||
 					fileDiv.equals(CmnConsts.FILE_DIV.JPG)) {
 				fullFilepath = IMG_ROOT_PATH;
+			} else if (fileDiv.equals(CmnConsts.FILE_DIV.XML)) {
+				fullFilepath = XML_ROOT_PATH;			
 			} else {
 				fullFilepath = SHARE_ROOT_PATH;
 			}			

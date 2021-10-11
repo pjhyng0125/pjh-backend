@@ -1,4 +1,4 @@
-package pjh.test.util.ConvertUtil;
+package pjh.test.util.convert;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,7 +7,7 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
-import pjh.cmn.util.ConvertUtil;
+import pjh.cmn.util.MapUtil;
 
 /**
  * Map 변환 테스트
@@ -26,9 +26,8 @@ class MapConvertTest {
 
 	@Test
 	void mapToJsonTest() {
-		initData();
-		
-		String rtnStr = ConvertUtil.mapToJson(map);
+		initData();	
+		String rtnStr = MapUtil.mapToJson(map);
 		
 		assertEquals(rtnStr, jsonStr);
 	}
@@ -36,8 +35,7 @@ class MapConvertTest {
 	@Test
 	void jsonToMapTest() {
 		initData();
-		
-		Map<String, Object> rtnMap = ConvertUtil.jsonToMap(jsonStr);
+		Map<String, Object> rtnMap = MapUtil.jsonToMap(jsonStr);
 		
 		assertEquals(rtnMap, map);				
 	}
@@ -46,25 +44,8 @@ class MapConvertTest {
 	void getValFromMapStrTest() {
 		initData();
 		String key = "first";
-		
-		String rtnVal = ConvertUtil.getValFromMapStr(map.toString(), key);
+		String rtnVal = MapUtil.getValFromMapStr(map.toString(), key);
 		
 		assertEquals(rtnVal, "java");				
-	}
-	
-	@Test
-	void getQueryStrFromUrlTest() {
-		String url = "http://localhost:8080/pjh/sample.jsp?k1=v1&k2=v2&k3=v3";
-		String queryStr = ConvertUtil.getQueryStrFromUrl(url);
-		
-		assertEquals(queryStr, "{\"k1\":\"v1\",\"k2\":\"v2\",\"k3\":\"v3\"}");				
-	}
-	
-	@Test
-	void getExceptQueryStrFromUrlTest() {
-		String url = "http://localhost:8080/pjh/sample.jsp?k1=v1&k2=v2&k3=";
-		String queryStr = ConvertUtil.getQueryStrFromUrl(url);
-		
-		assertEquals(queryStr, "{\"k1\":\"v1\",\"k2\":\"v2\"}");				
 	}
 }

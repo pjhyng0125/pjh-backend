@@ -18,6 +18,15 @@ public class StringUtil {
 	}
 	
 	/**
+	 * null 체크하여 "" 반환
+	 * @param String
+	 * @return String
+	 */
+	public static String nvl(String val) {
+		return isEmptyTrim(val) ? "" : val;
+	}
+	
+	/**
 	 * 금액 단위 버림
 	 * @param String am 금액
 	 * @param String cutStart 단위 버림 시작점 (뒤에서부터 count)

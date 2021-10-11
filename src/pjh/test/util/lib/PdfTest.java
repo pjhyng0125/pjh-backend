@@ -1,4 +1,4 @@
-package pjh.test.util.PdfUtil;
+package pjh.test.util.lib;
 
 import static org.junit.jupiter.api.Assertions.*;
 
