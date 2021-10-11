@@ -13,5 +13,8 @@
 	<classpathentry kind="lib" path="lib/pdf/bcprov-jdk16-146.jar"/>
 	<classpathentry kind="lib" path="lib/pdf/bctsp-jdk16-1.46.jar"/>
 	<classpathentry kind="lib" path="lib/pdf/itextpdf-5.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/json/json-20200518.jar"/>
+	<classpathentry kind="lib" path="lib/json/json-20210307.jar"/>
+	<classpathentry kind="lib" path="lib/xml/jdom-2.0.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
