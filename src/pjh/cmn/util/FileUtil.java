@@ -117,7 +117,7 @@ public class FileUtil {
 	 */
 	public static String getFullFilepath(String fileName, String fileDiv) {
 		String fullFilepath = "";
-		if (!StringUtil.isEmptyTrim(fileName) ||
+		if (!StringUtil.isEmptyTrim(fileName) &&
 			!StringUtil.isEmptyTrim(fileDiv)) {
 			if (fileDiv.equals(CmnConsts.FILE_DIV.TXT)) {
 				fullFilepath = TXT_ROOT_PATH;
