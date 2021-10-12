@@ -18,7 +18,7 @@ public class CmnConsts {
 		/* PDF 디렉토리, 파일구분 */
 		public static String PDF = "pdf";
 		
-		/* PNG 디렉토리 */
+		/* IMG 디렉토리 */
 		public static String IMG = "img";
 		
 		/* PNG 파일구분 */
@@ -26,6 +26,9 @@ public class CmnConsts {
 		
 		/* JPG 파일구분 */
 		public static String JPG = "jpg";
+		
+		/* XML 디렉토리 */
+		public static String XML = "xml";
 	}
 	
 	/* 금액 자르기 단위 */
