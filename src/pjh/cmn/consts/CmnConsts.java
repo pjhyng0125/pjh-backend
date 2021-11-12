@@ -7,6 +7,9 @@ public class CmnConsts {
 	/* 파일 생성 공유 디렉토리 루트 경로 */
 	public static final String SHARE_ROOT_PATH = "C:\\pjh\\works\\eclipse\\pjh-backend\\share\\";
 	
+	/* TEXT 디렉토리, 파일구분 */
+	public static String EMPTY = "";
+	
 	/** 파일 구분 */
 	public static class FILE_DIV {
 		/* TEXT 디렉토리, 파일구분 */
