@@ -9,16 +9,16 @@ import pjh.cmn.consts.CmnConsts;
  * 주민등록번호 Util
  */
 public class RrnoUtil {
-	final static String KEY_BIRTH = "birth";
-	final static String KEY_FRNR_C = "frnrC";
-	final static String KEY_GENDER_C = "genderC";
-	final static String NTNLY_KRN = "1"; // 내국인 (한국국적)
-	final static String NTNLY_FRNR = "2"; // 외국인 (외국국적)
-	final static String GENDER_MAN = "1"; // 남자
-	final static String GENDER_FMLE = "2"; // 여자
-	final static String YY_2000 = "20"; // 2000 년대생
-	final static String YY_1900 = "19"; // 1900 년대생
-	final static String YY_1800 = "18"; // 1800 년대생
+	private final static String KEY_BIRTH = "birth"; 		// 생년월일
+	private final static String KEY_FRNR_C = "frnrC";		// 내외국인 코드
+	private final static String KEY_GENDER_C = "genderC"; 	// 성별 코드
+	private final static String NTNLY_KRN = "1"; 			// 내국인 (한국국적)
+	private final static String NTNLY_FRNR = "2"; 			// 외국인 (외국국적)
+	private final static String GENDER_MAN = "1"; 			// 남자
+	private final static String GENDER_FMLE = "2"; 			// 여자
+	private final static String YY_2000 = "20"; 			// 2000 년대생
+	private final static String YY_1900 = "19"; 			// 1900 년대생
+	private final static String YY_1800 = "18"; 			// 1800 년대생
 	
 	/**
 	 * 인스턴스화 방지
@@ -29,10 +29,70 @@ public class RrnoUtil {
 	
 	/**
 	 * 주민등록번호 구분 정보 반환
+	 * @param String 생년월일(YYYYMMDD)
+	 * @param String 내외국인 코드
+	 * @param String 성별 코드
+	 * @return String 주민등록번호 구분 정보
+	 */
+	public static String getRrnoDvCFromPsnlInfo(String birth, String frnrDv, String genderC) {
+		String rrnoDvC = "";
+		if (!StringUtil.isEmptyTrim(birth) &&
+			!StringUtil.isEmptyTrim(frnrDv) &&
+			!StringUtil.isEmptyTrim(genderC) &&
+			birth.length() > 1) {
+			String birthYY = birth.substring(0, 2);
+			switch(birthYY) {
+			case YY_2000:
+				if (frnrDv.equals(NTNLY_KRN)) {
+					if (genderC.equals(GENDER_MAN)) {
+						rrnoDvC = "3";
+					} else if (genderC.equals(GENDER_FMLE)) {
+						rrnoDvC = "4";						
+					}
+				} else if (frnrDv.equals(NTNLY_FRNR)) {
+					if (genderC.equals(GENDER_MAN)) {
+						rrnoDvC = "7";
+					} else if (genderC.equals(GENDER_FMLE)) {
+						rrnoDvC = "8";						
+					}
+				}
+				break;
+			case YY_1900:
+				if (frnrDv.equals(NTNLY_KRN)) {
+					if (genderC.equals(GENDER_MAN)) {
+						rrnoDvC = "1";
+					} else if (genderC.equals(GENDER_FMLE)) {
+						rrnoDvC = "2";						
+					}
+				} else if (frnrDv.equals(NTNLY_FRNR)) {
+					if (genderC.equals(GENDER_MAN)) {
+						rrnoDvC = "5";
+					} else if (genderC.equals(GENDER_FMLE)) {
+						rrnoDvC = "6";						
+					}
+				}
+				break;
+			case YY_1800:
+				if (frnrDv.equals(NTNLY_KRN)) {
+					if (genderC.equals(GENDER_MAN)) {
+						rrnoDvC = "9";
+					} else if (genderC.equals(GENDER_FMLE)) {
+						rrnoDvC = "0";						
+					}
+				}
+				break;
+			}
+		}
+		
+		return rrnoDvC;
+	}
+	
+	/**
+	 * 주민등록번호 관련 개인정보 반환
 	 * @param String 주민등록번호
 	 * @return Map<String, String> 생년월일 (YYYYMMDD), 내외국인구분
 	 */
-	public static Map<String, String> getRrnoDvInfo(String rrno) {
+	public static Map<String, String> getRrnoPsnlInfo(String rrno) {
 		Map<String, String> rrnoDvInfo = new HashMap<>();
 		if (!StringUtil.isEmptyTrim(rrno)) {
 			rrno = rrno.replace("-", "");
