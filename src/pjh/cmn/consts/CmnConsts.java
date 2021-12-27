@@ -10,6 +10,9 @@ public class CmnConsts {
 	/* TEXT 디렉토리, 파일구분 */
 	public static String EMPTY = "";
 	
+	/* 기본 문자 인코딩 */
+	public static String DEFAULT_CHARSET = "UTF-8";
+	
 	/** 파일 구분 */
 	public static class FILE_DIV {
 		/* TEXT 디렉토리, 파일구분 */

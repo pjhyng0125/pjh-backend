@@ -1,5 +1,6 @@
 package pjh.cmn.util;
 
+import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -7,6 +8,8 @@ import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import pjh.cmn.consts.CmnConsts;
 
 /**
  * jackson lib
@@ -58,9 +61,14 @@ public class UrlUtil {
 	 * @param String data
 	 * @return String encData
 	 */
-	@SuppressWarnings("deprecation")
-	public static String urlEncode(String data) {
-		return URLEncoder.encode(data);
+	public static String urlEncode(String data){
+		String encStr = "";
+		try {
+			encStr = URLEncoder.encode(data, CmnConsts.DEFAULT_CHARSET);
+		} catch (UnsupportedEncodingException uee) {
+			uee.printStackTrace();
+		}
+		return encStr;
 	}
 	
 	/**
@@ -68,8 +76,13 @@ public class UrlUtil {
 	 * @param String data
 	 * @return String decData
 	 */
-	@SuppressWarnings("deprecation")
-	public static String urlDecode(String data) {
-		return URLDecoder.decode(data);
+	public static String urlDecode(String data){
+		String decStr = "";
+		try {
+			decStr = URLDecoder.decode(data, CmnConsts.DEFAULT_CHARSET);
+		} catch (UnsupportedEncodingException uee) {
+			uee.printStackTrace();
+		}
+		return decStr;
 	}
 }

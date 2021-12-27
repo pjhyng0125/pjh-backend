@@ -2,9 +2,10 @@ package pjh.test.util.convert;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.net.URLEncoder;
+
 import org.junit.jupiter.api.Test;
 
-import pjh.cmn.util.MapUtil;
 import pjh.cmn.util.UrlUtil;
 
 /**
@@ -53,5 +54,17 @@ class UrlConvertTest {
 		String spaceToPlus = "A+++B";
 		
 		assertEquals(encData, spaceToPlus);				
+	}
+	
+	@Test
+	void urlConvertCharsetTest() {
+		String data = "결제하기";
+		String encUTF8Data = UrlUtil.urlEncode(data);
+		@SuppressWarnings("deprecation")
+		String encNonCharSetData = URLEncoder.encode(data);
+		// [문제] charSet 생략 시, %3F (?) 출력 케이스 확인 => 디코딩 시 ???? 출력
+		// Java에서 한글을 인코딩할 경우, 문자 인코딩 UTF-8 반드시 명시해 주자
+		
+		assertEquals(encUTF8Data, encNonCharSetData);				
 	}
 }
