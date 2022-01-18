@@ -66,4 +66,16 @@ public class CmnConsts {
 		/* Boolean */
 		public static String BOOLEAN = "Boolean";
 	}
+	
+	/* 일시 포멧 구분 */
+	public static class DATE_FORMAT {
+		/* 기본값 */
+		public static String DEFAULT = "yyyyMMddHHmmss";
+		
+		/* ddMMyy */
+		public static String ddMMyy = "dd.MM.yy";
+		
+		/* EEE, MMM d, "yy */
+		public static String EEEMMMdyy = "EEE, MMM d, \"yy";
+	}
 }
