@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <person no="1">
+    <name>pjh</name>
+    <gender>man</gender>
+    <adress>seoul</adress>
+    <height>200</height>
+  </person>
+  <person no="2">
+    <name>kms</name>
+    <gender>man</gender>
+    <adress>jeju</adress>
+  </person>
+  <person no="3">
+    <name>ysh</name>
+    <gender>man</gender>
+  </person>
+</root>
