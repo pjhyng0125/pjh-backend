@@ -7,10 +7,14 @@ import java.text.SimpleDateFormat;
 import java.util.LinkedHashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pjh.cmn.util.JsonUtil;
 import pjh.cmn.util.VoUtil;
@@ -25,6 +29,8 @@ class JsonConvertTest {
 	String jsonStr = "";
 	String timeStamp = "";
 	final String DATE_FORMAT = "yyyyMMddHHmmss";
+	SnakeCase sc;
+	ObjectMapper om;
 	
 	void initData() {
 		map.put("zero", "kotlin");
@@ -39,6 +45,10 @@ class JsonConvertTest {
 	@BeforeEach
 	void init() {
 		initData();
+		
+		sc = new SnakeCase();
+		sc.setTimeStamp(timeStamp);
+		om = new ObjectMapper();
 	}
 	
 	@Test
@@ -90,12 +100,48 @@ class JsonConvertTest {
 	}
 	
 	@Test
-	void snake_caseTest() {
-		SnakeCase sc = new SnakeCase();
-		sc.setTime_stamp(timeStamp);
+	void printSnakeCase() {
 		System.out.println("[snake_caseTest] " + sc);
-		
 		VoUtil.printVo(sc);
+	}
+	
+	@Test
+	void printConvertedJsonStrTest() throws JsonProcessingException {
+		String jsonStr = om.writeValueAsString(sc);
+		System.out.println("converted JsonStr : " + jsonStr);
+		assertTrue(jsonStr.contains("time_stamp"));
+	}
+	
+	@Test
+	void printConvertedMapKeySetTest() {
+		boolean isJsonConvert = false;
+		
+		Map<String, Object> voMap = om.convertValue(sc, Map.class);
+		
+		System.out.println("[MapKeySet출력] Map : " + voMap);
+		
+		for (String key : voMap.keySet()) {
+			isJsonConvert = key.equals("time_stamp");
+			System.out.println("[keySet] key : " + key);
+			System.out.println("[keySet] value : " + voMap.get(key));
+		}
+		assertTrue(isJsonConvert);
+	}
+	
+	@Test
+	void printConvertedMapEntrySetTest() {
+		boolean isJsonConvert = false;
+		
+		Map<String, Object> voMap = om.convertValue(sc, Map.class);
+		System.out.println("converted Map : " + voMap);
+		
+		for (Entry<String, Object> elem : voMap.entrySet()) {
+			String key = elem.getKey();
+			isJsonConvert = key.equals("time_stamp");
+			System.out.println("key : " + key);
+			System.out.println("value : " + elem.getValue());
+		}
+		assertTrue(isJsonConvert);
 	}
 	
 	@Test
