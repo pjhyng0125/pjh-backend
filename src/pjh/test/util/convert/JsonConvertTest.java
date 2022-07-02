@@ -2,6 +2,7 @@ package pjh.test.util.convert;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.LinkedHashMap;
@@ -11,9 +12,13 @@ import java.util.Map.Entry;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pjh.cmn.util.JsonUtil;
@@ -151,5 +156,51 @@ class JsonConvertTest {
 		System.out.println("[camelCaseTest] " + cc);
 		
 		VoUtil.printVo(cc);
+	}
+	
+	@Test
+	@DisplayName("org JSON 형 변환 테스트")
+	void orgJsonConvertTest() {
+		JSONObject jObj = new JSONObject();
+		jObj.put("input", "String");
+		
+		String inputStr = (String) jObj.get("input");
+		assertEquals(inputStr, "String");
+	}
+	
+	@Test
+	@DisplayName("simple JSON 형 변환 테스트")
+	@SuppressWarnings("unchecked")
+	void simpleJsonConvertTest() {
+		org.json.simple.JSONObject jObj = new org.json.simple.JSONObject();
+		jObj.put("input", "String");
+		
+		String inputStr = (String) jObj.get("input");
+		assertEquals(inputStr, "String");
+	}
+	
+	@Test
+	@DisplayName("ObjectMapper 반환 결과 simple JSON 형 변환 테스트")
+	void OmRsSimpleJsonConvertTest() throws JsonMappingException, JsonProcessingException {
+		String jsonString = "{\"k1\":\"v1\",\"k2\":\"v2\"}";
+		org.json.simple.JSONObject jObj = new org.json.simple.JSONObject();
+	    ObjectMapper mapper = new ObjectMapper();
+	    
+	    jObj = mapper.readValue(jsonString, org.json.simple.JSONObject.class);
+		
+		String inputStr = (String) jObj.get("k1");
+		assertEquals(inputStr, "v1");
+	}
+	
+	@Test
+	public void givenTheJsonNode_whenRetrievingDataFromId_thenCorrect() 
+	  throws JsonParseException, IOException {
+	    String jsonString = "{\"k1\":\"v1\",\"k2\":\"v2\"}";
+	    ObjectMapper mapper = new ObjectMapper();
+	    JsonNode actualObj = mapper.readTree(jsonString);
+
+	    // When
+	    JsonNode jsonNode1 = actualObj.get("k1");
+	    assertEquals(jsonNode1.textValue(), "v1");
 	}
 }
