@@ -203,4 +203,21 @@ class JsonConvertTest {
 	    JsonNode jsonNode1 = actualObj.get("k1");
 	    assertEquals(jsonNode1.textValue(), "v1");
 	}
+	
+	@Test
+	public void givenTheJsonNode_whenRetrievingDataFromId_thenCorrect2() 
+	  throws JsonParseException, IOException {
+	    org.json.simple.JSONObject dataBody = new org.json.simple.JSONObject();
+	    org.json.simple.JSONObject sample = new org.json.simple.JSONObject();
+	    dataBody.put("result_cd", "0000");
+	    dataBody.put("result_msg", "성공");
+	    sample.put("dataBody", dataBody);
+	    
+	    System.out.println(sample);
+	    
+	    org.json.simple.JSONObject rst = om.convertValue(sample.get("dataBody"), org.json.simple.JSONObject.class);
+	    
+	    System.out.println("rst : " + rst.toString());
+	    System.out.println("rst json : " + rst);
+	}
 }
