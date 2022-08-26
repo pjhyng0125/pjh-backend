@@ -2,9 +2,7 @@ package pjh.test.async;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -17,10 +15,10 @@ public class SaladMarket {
 
 	// Salad List get
 	private final List<Salad> saladList = Arrays.asList(
-			new Salad("기본", 2000, 1000),
-			new Salad("닭가슴살", 4000, 5000),
-			new Salad("리코타치즈", 3900, 2000),
-			new Salad("오리훈제", 6000, 4000));
+			new Salad("기본", 2000),
+			new Salad("닭가슴살", 4000),
+			new Salad("리코타치즈", 3900),
+			new Salad("오리훈제", 6000));
 
 	/**
 	 * 샐러드 dto 정보 조회
