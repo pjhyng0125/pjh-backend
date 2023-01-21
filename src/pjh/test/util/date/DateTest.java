@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Locale;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import pjh.cmn.consts.CmnConsts;
@@ -13,6 +14,9 @@ import pjh.cmn.util.DateUtil;
  * 디렉토리 관련 테스트
  */
 class DateTest {
+	String stdDateyyyyMMdd = "20230121";
+	String stdDateyyyyMMddHHmmdd = "20230121110000";
+	
 	@Test
 	void getDefaultTest() {
 		assertNotNull(DateUtil.getCurrentTmss(CmnConsts.DATE_FORMAT.DEFAULT, Locale.getDefault()));
@@ -46,5 +50,95 @@ class DateTest {
 	@Test
 	void getEEEMMMdyyENGLISHTest() {
 		assertNotNull(DateUtil.getCurrentTmss(CmnConsts.DATE_FORMAT.EEEMMMdyy, Locale.ENGLISH));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMdd (정상)")
+	void isDayBetween_true_20230121() {
+		assertTrue(DateUtil.isStdDateBetween(stdDateyyyyMMdd, "20230121", "20230123", "yyyyMMdd"));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMdd (시작날짜 == 오늘날짜)")
+	void isDayBetween_true_20230121_start_same() {
+		assertTrue(DateUtil.isStdDateBetween(stdDateyyyyMMdd, "20230121", "20230123", "yyyyMMdd"));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMdd 종료날짜 == 오늘날짜)")
+	void isDayBetween_true_20230121_end_same() {
+		assertTrue(DateUtil.isStdDateBetween(stdDateyyyyMMdd, "20230119", "20230121", "yyyyMMdd"));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMdd (시작일자 느림)")
+	void isDayBetween_false_20230121_start_later() {
+		assertFalse(DateUtil.isStdDateBetween(stdDateyyyyMMdd, "20230129", "20230123", "yyyyMMdd"));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMdd (종료일자 빠름)")
+	void isDayBetween_false_20230121_end_first() {
+		assertFalse(DateUtil.isStdDateBetween(stdDateyyyyMMdd, "20230120", "20230119", "yyyyMMdd"));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMdd (공백)")
+	void isDayBetween_false_empty() {
+		assertFalse(DateUtil.isStdDateBetween(stdDateyyyyMMdd, "20230120", "", "yyyyMMdd"));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMdd (null)")
+	void isDayBetween_false_null() {
+		assertFalse(DateUtil.isStdDateBetween(stdDateyyyyMMdd, null, "20230123", "yyyyMMdd"));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMddHHmmss (정상)")
+	void isDtmBetween_true_20230121110000() {
+		assertTrue(DateUtil.isStdDateBetween(stdDateyyyyMMddHHmmdd, "20230121100000", "20230121120000", "yyyyMMddHHmmss"));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMddHHmmss (시작일시==오늘일시)")
+	void isDtmBetween_false_20230121110000_start_same() {
+		assertTrue(DateUtil.isStdDateBetween(stdDateyyyyMMddHHmmdd, stdDateyyyyMMddHHmmdd, "20230121120000", "yyyyMMddHHmmss"));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMddHHmmss (종료일시==오늘일시)")
+	void isDtmBetween_false_20230121110000_end_same() {
+		assertTrue(DateUtil.isStdDateBetween(stdDateyyyyMMddHHmmdd, "20230121100000", stdDateyyyyMMddHHmmdd, "yyyyMMddHHmmss"));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMddHHmmss (시작일시 느림)")
+	void isDtmBetween_false_20230121110000_start_later() {
+		assertFalse(DateUtil.isStdDateBetween(stdDateyyyyMMddHHmmdd, "20230123100000", "20230121120000", "yyyyMMddHHmmss"));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMddHHmmss (종료일시 빠름)")
+	void isDtmBetween_false_20230121110000_end_first() {
+		assertFalse(DateUtil.isStdDateBetween(stdDateyyyyMMddHHmmdd, "20230121100000", "20230121100000", "yyyyMMddHHmmss"));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMddHHmmss (길이다름)")
+	void isDtmBetween_false_20230121110000_param_length_different() {
+		assertFalse(DateUtil.isStdDateBetween(stdDateyyyyMMddHHmmdd, "20230121100000", "20230121100000", "yyyyMMdd"));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMddHHmmss (공백)")
+	void isDtmBetween_false_20230121110000_empty() {
+		assertFalse(DateUtil.isStdDateBetween(stdDateyyyyMMddHHmmdd, "20230121100000", "20230121100000", ""));
+	}
+	
+	@Test
+	@DisplayName("yyyyMMddHHmmss (null)")
+	void isDtmBetween_false_20230121110000_null() {
+		assertFalse(DateUtil.isStdDateBetween(stdDateyyyyMMddHHmmdd, null, "20230121100000", "yyyyMMddHHmmss"));
 	}
 }
