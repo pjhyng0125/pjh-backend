@@ -1,7 +1,13 @@
 package pjh.test.util.date;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import org.junit.jupiter.api.DisplayName;
@@ -140,5 +146,36 @@ class DateTest {
 	@DisplayName("yyyyMMddHHmmss (null)")
 	void isDtmBetween_false_20230121110000_null() {
 		assertFalse(DateUtil.isStdDateBetween(stdDateyyyyMMddHHmmdd, null, "20230121100000", "yyyyMMddHHmmss"));
+	}
+	
+	@Test
+	@DisplayName("월의 주 반환")
+	void getWeekOfMonth() throws ParseException {
+		String dayStr = "20230211";
+		String format = "yyyyMMdd";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		Date date = sdf.parse(dayStr);
+		
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		int month = cal.get(Calendar.MONTH) + 1;
+		int week = cal.get(Calendar.WEEK_OF_MONTH);
+		
+		System.out.println("월 주차 : " + month +"월 " + week +"주차" );
+	}
+	
+	@Test
+	@DisplayName("주의 처음과 마지막 일자 반화")
+	void getWeekOfFitstAndLastDay() throws ParseException {
+		String format = "yyyy-MM-dd (EEE)";
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		
+		Calendar c = Calendar.getInstance();
+		System.out.println("today : " + sdf.format(c.getTime()));
+		c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+		System.out.println("first day of week : " + sdf.format(c.getTime()));
+		c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+		System.out.println("last day of week : " + sdf.format(c.getTime()));
 	}
 }
