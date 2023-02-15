@@ -166,7 +166,7 @@ class DateTest {
 	}
 	
 	@Test
-	@DisplayName("주의 처음과 마지막 일자 반화")
+	@DisplayName("주의 처음과 마지막 일자 반환")
 	void getWeekOfFitstAndLastDay() throws ParseException {
 		String format = "yyyy-MM-dd (EEE)";
 		SimpleDateFormat sdf = new SimpleDateFormat(format);
@@ -175,6 +175,32 @@ class DateTest {
 		System.out.println("today : " + sdf.format(c.getTime()));
 		c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
 		System.out.println("first day of week : " + sdf.format(c.getTime()));
+		c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
+		System.out.println("last day of week : " + sdf.format(c.getTime()));
+	}
+	
+	@Test
+	@DisplayName("Calendar 클래스 week 테스트")
+	void calendarClassWeekTest() throws ParseException {
+		int y = 2023;
+		int m = Calendar.FEBRUARY;
+		int d = 15;
+		
+		String format = "yyyy-MM-dd (EEE)";
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		
+		Calendar c = Calendar.getInstance();
+		c.set(Calendar.YEAR, y);
+		c.set(Calendar.MONTH, m);
+		c.set(Calendar.DAY_OF_MONTH, d);
+		
+		System.out.println("m월 n주차 : " + ( c.get(Calendar.MONTH) + 1 ) + "월 " + c.get(Calendar.WEEK_OF_MONTH) + "주차");
+		
+		System.out.println("today : " + sdf.format(c.getTime()));
+		
+		c.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+		System.out.println("first day of week : " + sdf.format(c.getTime()));
+		
 		c.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
 		System.out.println("last day of week : " + sdf.format(c.getTime()));
 	}
