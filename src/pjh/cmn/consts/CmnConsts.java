@@ -12,6 +12,8 @@ public class CmnConsts {
 	
 	/* 기본 문자 인코딩 */
 	public static String DEFAULT_CHARSET = "UTF-8";
+	/* 기본 문자 인코딩 */
+	public static String EUC_KR_CHARSET = "EUC-KR";
 	
 	/** 파일 구분 */
 	public static class FILE_DIV {
@@ -78,4 +80,13 @@ public class CmnConsts {
 		/* EEE, MMM d, "yy */
 		public static String EEEMMMdyy = "EEE, MMM d, \"yy";
 	}
+	
+	/* 중첩 선언 테스트 */
+	public static class Parent {
+		public static class Child {
+			/* 기본값 */
+			public static String TEST= "test";			
+		}
+	}
+	
 }
